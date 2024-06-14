@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+.btn-primary {
+  @apply bg-gray-200 border-2 border-gray-200 text-gray-800 hover:!bg-gray-200 hover:!border-gray-200;
+}
+
+.btn-outline {
+  @apply bg-transparent border-2 border-gray-200 !text-white hover:!bg-gray-200 hover:!border-gray-200 hover:!text-gray-800;
+}
+
+.btn-outline[disabled] {
+  @apply !opacity-60 !cursor-not-allowed !bg-gray-400;
+}
