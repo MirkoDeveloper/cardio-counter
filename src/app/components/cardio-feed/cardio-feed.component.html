@@ -1,0 +1,44 @@
+<div class="flex flex-col w-full">
+  <h3
+    class="w-full flex justify-center text-3xl text-white mb-6"
+    *ngIf="cardioFeedList.length > 0"
+  >
+    Feed
+  </h3>
+  <div
+    *ngFor="let cardioDay of cardioFeedList; let i = index"
+    class="flex space-y-4 flex-col mb-5 last:mb-0 group"
+  >
+    <div
+      class="w-full border-2 rounded-xl"
+      [ngClass]="{
+        'border-orange-500': cardioDay.minutes >= 0 && cardioDay.minutes <= 25,
+        'border-yellow-300': cardioDay.minutes >= 26 && cardioDay.minutes <= 45,
+        'border-green-500': cardioDay.minutes > 45
+      }"
+    >
+      <div
+        class="w-full flex justify-between overflow-hidden h-full text-white"
+      >
+        <!-- LEFT -->
+        <div class="py-3 px-3">
+          {{ cardioDay.date | date : "EEE, d MMM" }}
+        </div>
+        <!-- RIGHT -->
+        <div
+          class="flex flex-row relative transition-all group-hover:translate-x-0 h-full"
+        >
+          <div class="w-60 py-3 px-3 flex justify-end items-center">
+            {{ cardioDay.minutes }} min.
+          </div>
+          <div
+            class="w-20 bg-red-400 py-3 px-3 cursor-pointer flex justify-center items-center text-white rounded-br-lg rounded-tr-lg"
+            (click)="onDelete(i)"
+          >
+            DELETE
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
